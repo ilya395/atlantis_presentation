@@ -6,10 +6,15 @@
 	<title>popup Presentation Atlantis</title>
 	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
 
-	<div class="animat-prsent__section">
+	<div class="block block_1"></div>
+	<div class="block block_2"></div>
+	<div class="block block_3"></div>
+
+	<div class="animat-prsent__section" id="specAnimateBlock">
 		<div class="animat-prsent__container">
 			<div class="animat-prsent__content">
 				<div class="animat-prsent__item animat-prsent__title-block">
@@ -23,8 +28,11 @@
 					</div>
 				</div>
 
-				<div class="animat-prsent__item animat-prsent__picture-block">
-					<div class="animat-prsent__picture"></div>
+				<div class="animat-prsent__item animat-prsent__picture-block parallax" id="port">
+					<div class="animat-prsent__picture animated" id="tabletAnimateMove"></div>
+					<div class="animat-prsent__picture-sky animated parallax-layer" id="skyAnimateMove">
+						<img src="img/sky.png" alt="" class="animat-prsent__picture-img">
+					</div>
 				</div>
 
 				<div class="animat-prsent__item animat-prsent__form-block">
@@ -34,7 +42,7 @@
 								<input type="text" class="animat-prsent__field animat-prsent__name-field" placeholder=" Ваше Имя">
 							</div>
 							<div class="animat-prsent__field-block">
-								<input type="tel" class="animat-prsent__field animat-prsent__phone-field" placeholder="Ваш Телефон">
+								<input type="tel" class="animat-prsent__field animat-prsent__phone-field phonemask" placeholder="Ваш Телефон">
 							</div>
 							<div class="animat-prsent__field-block">
 								<button type="button" class="animat-prsent__btn">Скачать Презентацию</button>
@@ -49,7 +57,13 @@
 		</div>
 	</div>
 
+	<span id="a"></span><br>
+	<span id="b"></span><br>
+	<span id="g"></span><br>
+
 	<script src="js/libs.min.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/jquery.parallax.js"></script>
+	<!-- <script src="js/jquery.event.frame.js"></script> -->
 </body>
 </html>

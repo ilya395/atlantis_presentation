@@ -1,3 +1,68 @@
+jQuery(document).ready(function(){
+	// Declare parallax on layers
+	jQuery('.parallax-layer').parallax({
+		mouseport: jQuery("#port")
+	});
+});
+
+// включаем анимацию
+window.onscroll = function() {	
+	var specBlock = document.getElementById('specAnimateBlock');
+	var coords = specBlock.getBoundingClientRect();
+	//console.log(coords.top);
+	var windowHeight = document.documentElement.clientHeight;
+	if (coords.top < 400) {
+		var tabletAnimateMove = document.getElementById('tabletAnimateMove');
+		tabletAnimateMove.classList.add('slideInUp', 'show');
+		var skyAnimateMove = document.getElementById('skyAnimateMove');
+		skyAnimateMove.classList.add('slideInUp', 'show');
+	}
+}
+/*.терпеть от гироскопа */
+init ();
+
+function init() {
+
+	if (window.DeviceOrientationEvent) {
+
+		console.log("DeviceOrientation is supported");
+
+		window.addEventListener('deviceorientation', function(e){
+
+			console.log(e.alpha, e.beta, e.gamma);
+
+			console.log("a = "+e.alpha); 
+			console.log("b = "+e.beta); 
+			console.log("g = "+e.gamma);
+
+			var a, b, g;
+			document.getElementById("a").innerHTML = e.alpha;
+			document.getElementById("b").innerHTML = e.beta;
+			document.getElementById("g").innerHTML = e.gamma;
+
+			var gyroMove = document.getElementById('skyAnimateMove');
+			if ( e.beta > 0 ) {
+				gyroMove.style.top = '100%';
+			} else if ( e.beta < 0 ) {
+				gyroMove.style.top = '95%';
+			}
+
+			if ( e.gamma > 0 ) {
+				gyroMove.style.left = '100%';
+			} else if ( e.gamma < 0 ) {
+				gyroMove.style.left = '95%';
+			}
+
+
+		}, false);
+
+	} else {
+
+		console.log("Orientation is not supported")
+
+	}
+}
+
 var inputmask = $('.phonemask');
     
     Inputmask.extendDefinitions({
@@ -8,42 +73,4 @@ var inputmask = $('.phonemask');
   inputmask.inputmask({
    mask: "+7(f99)999-99-99"
   }); 
- }
-
-$(document).ready(function() {
-
-	var popUpGo = function() {
-		$('.popup__row').css('bottom', '20px');
-	};
-	setTimeout(popUpGo, 3000);
-
-	$('#closePopUpBtn').on('click', function() {
-		$('.popup__row').css('display', 'none');
-	});
-
-	$('#deployContentPopUpBtn').on('click', function() {
-		$('.popup__start-position').css('display', 'none');
-		$('.popup__end-position').css('display', 'block');
-	});
-
-
-
-	$('#closeModalBtn').on('click', function() {
-		$('.big-modal__section').css('display', 'none');
-	});
-
-	$('#deployModalBtn').on('click', function() {
-		$('.big-modal__section').css('display', 'block');
-	});
-
-	$('#deployModalBtnOne').on('click', function() {
-		$('.big-modal__section').css('display', 'block');
-	});
-	$('#deployModalBtnTwo').on('click', function() {
-		$('.big-modal__section').css('display', 'block');
-	});
-	$('#deployModalBtnThree').on('click', function() {
-		$('.big-modal__section').css('display', 'block');
-	});
-
-});
+}
